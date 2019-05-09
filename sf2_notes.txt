@@ -1,0 +1,4 @@
+git add readies a file to be committed
+git commit saves the changes in the local repository -> use the -m followed by a message in '' to give the commit a message
+a commit must have a message
+git push, pushes the files to github
