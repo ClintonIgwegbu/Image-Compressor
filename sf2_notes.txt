@@ -1,3 +1,5 @@
+Notes are given in comments in code - sometimes at the bottom of the script
+
 the half cosine filter creates a 270 pixel width image i.e. extra 7 pixels on either side
 not that filter width is 15 i.e. central pixel with 7 on either side
 it seems that the new images starts the first time a pixel of the filter overlaps the image assuming it is being slid from the far left to
