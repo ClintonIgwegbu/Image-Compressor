@@ -32,7 +32,7 @@ for i=1:m
 end
 
 return
-
+   
 % xe means X extended
 % narginchk(low, high) gives error if number of input arguments is below 
 % low or above high

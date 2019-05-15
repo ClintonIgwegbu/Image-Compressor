@@ -1,0 +1,41 @@
+function y = golden_search(x, f)
+
+    % in this case x will be the step-size tried 
+    % must choose 3 points: x1, x2, x3 such that x2 is less
+    % than x1 and x2 so that a minimum must exist in the interval
+    % between x1 and x3
+    % find a new point x' such that it is the golden ratio away
+    % from x1 
+    % points are numbered in the order they are introduced
+    % to understand the algorithm and not get confused when designing 
+    % golden-section search - must define x3 as that point that is
+    % closer to x2 and x4 as that point that is closer to x1 - ALWAYS
+    % at the end of the update the interval must ALWAYS be x1, x3, x2
+    % with x3 closer to x2. Keeping these guidelines in mind helps
+    % determine what the update steps are
+    % also keep in mind that interval (x3-x4) / (x1 - x3) = 2 - 1/r
+    % = 1-r where r is the golden ratio 0.618 
+    
+    
+    r = (sqrt(5) - 1)/2;
+    x3 = r*x2 + (1-r)*x1;
+    
+    % ensure that y3 is less than y1 and y2
+    
+    x4 = r*x1 + (1-r)*x2;
+    
+    
+    y1 = f(x1);
+    y2 = f(x2);
+    y3 = f(x3);
+    y4 = f(x4);
+    
+    if y4 > y3:
+        
+    else if y4 < y3:
+            
+    
+            
+
+    
+    

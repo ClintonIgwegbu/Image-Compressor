@@ -1,17 +1,9 @@
-hcf = halfcos(15); 
-
-for i = 1:256
-    Xf(i,:) = conv(X(i,:), hcf);
-end
-
-figure(1)
-draw(X) % original 
-
-figure(2)
-draw(Xf(:,[1:256]+7)) % filtered
+hcf = halfcos(15);
+hcf5 = halfcos(5); 
 
 Xrf = convse(X, hcf); % row-filtered with symmetric extension
 Xrcf = convse(Xrf', hcf)'; % then column filter - now fully filtered
+Xrcf = convse(convse(X, ), hcf5)'; % then column filter - now fully filtered
 
 Xcf = convse(X', hcf)';  % column-filtered first
 Xcrf = convse(Xcf, hcf); % then row filter - now fully filtered
@@ -25,7 +17,7 @@ draw(Xrcf)
 figure(5)
 draw(Xcrf)
 
-max_abs_diff = max(abs(Xrcf(:) - Xcrf(:)))
+max_abs_diff = max(max(abs(Xrcf - Xcrf)))
 
 
 Xh = X - Xrcf;
@@ -37,4 +29,5 @@ draw(Xh)
 % conv2se is the symmetric extension version of conv2
 % a difference is observed between rc and cr filtering:
     % for N = 15 we get max_abs_diff = 1.1369e-13
+    % 
 

@@ -20,12 +20,18 @@ else
   xe = [(m2-1:-1:1)  (1:c)  (c+1-(1:m2-1))];
 end  
 
+
 t = 0:2:(c-1);
 
-Y = zeros(r,length(t));
+Y = zeros(r,length(t)); % do not bother to calculate filter outputs that 
+                        % discarded by the decimation process
 % Loop for each term in h.
 for i=1:m,
   Y = Y + h(i) * X(:,xe(t+i));
 end
 
 return
+
+% notice how in the even case we extend by m2-1 samples on each side but in
+% the convse fn. we extended by m2 - why is this?
+% still don't understand how the convolution works here or in convse
