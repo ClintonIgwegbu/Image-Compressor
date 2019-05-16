@@ -19,24 +19,28 @@ Xh35 = X - Xl35;
 % low-pass filtered image seems to be brightened when displayed this way 
 % draw
 figure(1)
-draw([Xl5 Xh5])
+% draw([Xl5 Xh5])
+draw(beside(Xl5, Xh5))
 
 figure(2)
-draw([Xl15 Xh15])
+% draw([Xl15 Xh15])
+draw(beside(Xl15, Xh15))
 
 figure(3)
-draw([Xl25 Xh25])
+% draw([Xl25 Xh25])
+draw(beside(Xl25, Xh25))
 
 figure(4)
-draw([Xl35 Xh35])
+% draw([Xl35 Xh35])
+draw(beside(Xl35, Xh35))
 
 % energy in each image
-El5 = sum(Xl5(:).^2);
-Eh5 = sum(Xh5(:).^2);
-El15 = sum(Xl15(:).^2);
-Eh15 = sum(Xh15(:).^2);
-El25 = sum(Xl25(:).^2);
-Eh25 = sum(Xh25(:).^2);
+El5 = sum(Xl5(:).^2)
+Eh5 = sum(Xh5(:).^2)
+El15 = sum(Xl15(:).^2)
+Eh15 = sum(Xh15(:).^2)
+El25 = sum(Xl25(:).^2)
+Eh25 = sum(Xh25(:).^2)
 El35 = sum(Xl35(:).^2)
 Eh35 = sum(Xh35(:).^2)
 

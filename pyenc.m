@@ -13,7 +13,7 @@ function [x1,x2,x3,x4,y0,y1,y2,y3] = pyenc(X, h)
     y2 = x2 - rowint(rowint(x3, 2*h)', 2*h)';
     y3 = x3 - rowint(rowint(x4, 2*h)', 2*h)';
     
-    step = 17;
+%     step = 17;
     
     % we quantise first then find the entropy 
 %     h_x = bpp(quantise(X,step))

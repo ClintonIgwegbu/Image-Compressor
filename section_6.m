@@ -41,7 +41,7 @@ draw(X)
 figure(2)
 draw(X_discrete)
 figure(3)
-draw(out4)
+draw(out1)
 
 
 % above the laplacian pyramid was quantised then an attempt was made
@@ -55,6 +55,7 @@ draw(out4)
 % RMS errors are larger in the pyramid scheme because the quantisation 
 % errors accummulate from all the intermediate images that are summed
 
+% 40stage 
 
 
 

@@ -38,7 +38,7 @@ return
 % Now I get the same results. Somehow the value of X changed giving me
 % different results. MUST KEEP A CLOSE EYE ON THIS - my code may be
 % changing X
-% Equal MSE
+% Equal MSE for step size of 17 in the direct quantisation 
 % 1-stage: 15.5562 - same as above, as expected 
 % 2-stage: [16.9852 11.3235]
 % 3-stage: [17.8184 11.8789 6.4794]

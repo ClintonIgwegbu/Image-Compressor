@@ -1,5 +1,7 @@
 
-h = 1/4*[1 2 1];
+h1 = 1/4*[1 2 1];
+h2 = 1/16*[1 4 6 4 1];
+h = h2;
 
 % draw(beside(y0,beside(y1,beside(y2,beside(y3,x4)))))
 
@@ -57,6 +59,8 @@ draw(X)
 figure(2)
 draw(X_discrete)
 figure(3)
+draw(out2)
+figure(4)
 draw(out4)
 
 % Visual Comparisons 
