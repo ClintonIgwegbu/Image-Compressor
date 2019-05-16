@@ -1,10 +1,8 @@
 function x3 = golden_search(f, x1, x2, tol)
     
     % f is a handle to a function 
-    % x is the step-size tried 
     % points are numbered in the order they are introduced
-    % to understand the algorithm and not get confused when designing 
-    % golden-section search - must define x3 as that point that is
+    % x3 is defined as that point that is
     % closer to x2 and x4 as that point that is closer to x1 - ALWAYS
     % at the end of the update the interval must ALWAYS be x1, x3, x2
     % with x3 closer to x2. Keeping these guidelines in mind helps
@@ -21,8 +19,8 @@ function x3 = golden_search(f, x1, x2, tol)
     
     % initial x1 and x2 must be picked such that f3 is less than 
     % f1 and f2
-    
-    while abs(x1-x2) < tol
+   
+    while abs(x1-x2) > tol
         x4 = r*x1 + (1-r)*x2; f4 = f(x4);
         if f4 < f3
             x2 = x3; f2 = f3;

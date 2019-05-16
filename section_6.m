@@ -21,7 +21,7 @@ y2 = quantise(y2, step);
 y3 = quantise(y3, step);
 
 out1 = py1dec(x1,y0,h); % decoder output for single stage pyramid 
-out2 = py2dec(x2,y1,y0,h);
+out2 = py2dec(x2,y0,y1,h);
 out3 = py3dec(x3,y0,y1,y2,h);
 out4 = py4dec(x4,y0,y1,y2,y3,h);
 
