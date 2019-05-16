@@ -1,0 +1,40 @@
+Notes are given in comments in code - sometimes at the bottom of the script
+
+the half cosine filter creates a 270 pixel width image i.e. extra 7 pixels on either side
+not that filter width is 15 i.e. central pixel with 7 on either side
+it seems that the new images starts the first time a pixel of the filter overlaps the image assuming it is being slid from the far left to
+the far right. i.e. since the filter assumes outside the image is black then the first time we get filter output that isn't black is when
+the rightmost pixel of the filter overlaps the image. This is when the central pixel of the filter (the spot that gets assigned the resulting)
+value is 7 pixels to the left of the original image. Therefore the image is extended by 7 pixels on either side resulting in 270 pixel width.
+Thus when trimming the image we shift the range [1:256] by 7 so that we neglect the first 7 pixels of the filter output
+
+GIT
+git add readies a file to be committed
+git commit saves the changes in the local repository -> use the -m followed by a message in '' to give the commit a message
+a commit must have a message
+git push, pushes the files to github
+
+Why subtract 128 from low-pass images to have zero mean? Do I need to edit my code?
+
+Section 7
+Laplacian pyramid method expands the number of samples by 1 + 1/4 + 1/16 + ... = 1.33
+which clearly isn't good for compression. Number of samples produced by DCT method
+is the same as that of original so it has a head-start on Laplacian pyramid scheme. 
+
+The discrete COSINE transform is closely related to the discrete FOURIER transform
+fourier uses complex exponentials, cosine tranform uses cosines. 
+
+2D DCT transform is linear and separable so it does not matter if we transform the rows
+of the image first or the columns
+
+Think of DCT like a fourier transform. When C is applied to a column in image X, we get a corresponding output column. Think
+of variation down column of X as POSITIONAL variation of pixel intensities along the column. As we move down column of resulting
+transformation we get the FREQUENCY variation. So by applying C to X we get a set of transformed columns. Take the transpose of this
+set and apply C to it so that we are transforming the rows of this intermediate result. This gives us the 2D DCT transform.
+So in Y, each NxN block of pixels (N is dimension of transformation C) is replaced by an NxN block of coefficients. Moving right
+along row gives increasing horizontal frequency components of the block of pixels while going down along a column gives inreasing
+vertical frequency components. The top left corner gives the dc value of the block of pixels. If Y is displayed as it is then it is
+confusing as the frequency components of each block of NxN pixels are adjacent to each other - so the image does not have much
+meaning. A meaningful image can be created by grouping all frequency coefficients of the same type into a single sub-image. Since
+we performed the transform on an NxN block of pixels the transform of each block was also NxN hence there are NxN distinct frequency
+coefficient types. Therefore after regrouping all like coefficents into one sub-image we will get NxN 
