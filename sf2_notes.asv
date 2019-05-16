@@ -18,11 +18,4 @@ Why subtract 128 from low-pass images to have zero mean? Do I need to edit my co
 
 Section 7
 Laplacian pyramid method expands the number of samples by 1 + 1/4 + 1/16 + ... = 1.33
-which clearly isn't good for compression. Number of samples produced by DCT method
-is the same as that of original so it has a head-start on Laplacian pyramid scheme. 
 
-The discrete COSINE transform is closely related to the discrete FOURIER transform
-fourier uses complex exponentials, cosine tranform uses cosines. 
-
-2D DCT transform is linear and separable so it does not matter if we transform he rows
-of the image first or the columns

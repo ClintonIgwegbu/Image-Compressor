@@ -5,7 +5,7 @@ function Y = colxfm(X,C)
 %  transformation given in C. The height of X must be a
 %  multiple of the size of C.
 
-N = length(C);
+N = length(C); % side-length of square matrix C 
 [m,n] = size(X);
 
 if rem(m,N) ~= 0,
@@ -21,3 +21,5 @@ for i=1:N:m,
   Y(i+t,:) = C * X(i+t,:);
 end
 return
+
+% length(X) is equivalent to max(size(x)) for non-empty array

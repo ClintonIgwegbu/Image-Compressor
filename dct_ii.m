@@ -14,3 +14,8 @@ for i=2:N,
 end
 
 return
+
+% compare this implementation to handout on pgs. 14 and 15
+% n is defined from 0 to N-1 meanwhile in theta assignment we have items
+% from 1 to N. Call this p. So note that n + 0.5 = p - 0.5 where p = n+1
+% i-1 and i=2:N gives the range of values of k.
