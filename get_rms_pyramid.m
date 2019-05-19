@@ -1,9 +1,9 @@
-function rms = get_rms(step, num_stages, X, h, equal_mse)
-    % mse is a boolean - true if using mse, false if const. step size
-    % across layers
+function rms = get_rms_pyramid(step, X, h, num_stages, equal_mse)
+    
+    % finds the root mean square value of a laplacian pyramid 
     
     if equal_mse
-        ratios = get_equal_mse_ratios(num_stages, X);
+        ratios = get_equal_mse_ratios(X, num_stages);
     else
         ratios = ones(num_stages);
     end
