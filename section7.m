@@ -7,7 +7,7 @@ Xsym = X - 128; % ensure X has zero-mean otherwise dc coefficients of transform
              % make X zero mean anyway?
              
           
-Y = colxfm(colxfm(Xsys,C8)',C8)';
+Y = colxfm(colxfm(Xsym,C8)',C8)';
 
 N = 8; draw(regroup(Y,N)/N); % divide by N to counter gain of DCT transform
 
