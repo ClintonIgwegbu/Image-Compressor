@@ -1,9 +1,9 @@
-function rms = get_rms(step, num_stages, X, h, equal_mse)
-    % mse is a boolean - true if using mse, false if const. step size
-    % across layers
+function rms = get_rms_pyramid(step, X, h, num_stages, equal_mse)
+    
+    % finds the root mean square value of a laplacian pyramid 
     
     if equal_mse
-        ratios = get_equal_mse_ratios(num_stages, X);
+        ratios = get_equal_mse_ratios(X, num_stages);
     else
         ratios = ones(num_stages);
     end
@@ -12,22 +12,25 @@ function rms = get_rms(step, num_stages, X, h, equal_mse)
     [x1,x2,x3,x4,y0,y1,y2,y3] = pyenc(X,h);
     
     % if statements ensure index does not exceed size of ratios array
-    
+    % if it does we don't care about that value of step so we set it to 0
     stepA = step;
-    if num_stage >= 2
+    if num_stages >= 2
         stepB = step*ratios(2);
     else
-        stepB = 0;
-      
-    if num_stage >= 3
+        stepB = step;
+    end
+    
+    if num_stages >= 3
         stepC = step*ratios(3);
     else
-        stepC = 0;
-        
+        stepC = step;
+    end
+    
     if num_stages >= 4
         stepD = step*ratios(4);
     else
-        stepD = 0; 
+        stepD = step;
+    end
     
     % quantise with different steps for each layer 
     X_discrete = quantise(X, step); % it IS right of me to use step here instead of step_X
@@ -47,7 +50,7 @@ function rms = get_rms(step, num_stages, X, h, equal_mse)
             out1 = py1dec(x1,y0,h);
             rms = std(X(:) - out1(:));
         case 2
-            out2 = py2dec(x2,y1,y0,h);
+            out2 = py2dec(x2,y0,y1,h);
             rms = std(X(:) - out2(:)); 
         case 3
             out3 = py3dec(x3,y0,y1,y2,h);

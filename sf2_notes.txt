@@ -24,5 +24,21 @@ is the same as that of original so it has a head-start on Laplacian pyramid sche
 The discrete COSINE transform is closely related to the discrete FOURIER transform
 fourier uses complex exponentials, cosine tranform uses cosines. 
 
-2D DCT transform is linear and separable so it does not matter if we transform he rows
+2D DCT transform is linear and separable so it does not matter if we transform the rows
 of the image first or the columns
+
+Think of DCT like a fourier transform. When C is applied to a column in image X, we get a corresponding output column. Think
+of variation down column of X as POSITIONAL variation of pixel intensities along the column. As we move down column of resulting
+transformation we get the FREQUENCY variation. So by applying C to X we get a set of transformed columns. Take the transpose of this
+set and apply C to it so that we are transforming the rows of this intermediate result. This gives us the 2D DCT transform.
+So in Y, each NxN block of pixels (N is dimension of transformation C) is replaced by an NxN block of coefficients. Moving right
+along row gives increasing horizontal frequency components of the block of pixels while going down along a column gives inreasing
+vertical frequency components. The top left corner gives the dc value of the block of pixels. If Y is displayed as it is then it is
+confusing as the frequency components of each block of NxN pixels are adjacent to each other - so the image does not have much
+meaning. A meaningful image can be created by grouping all frequency coefficients of the same type into a single sub-image. Since
+we performed the transform on an NxN block of pixels the transform of each block was also NxN hence there are NxN distinct frequency
+coefficient types. Therefore after regrouping all like coefficents into one sub-image WE WILL GET NxN SUBIMAGES - note that this is
+not the number of pixels in the sub-image but the number of subimages. We may call each sub-image Ys and the overall regrouped
+output, Yr.
+
+The (:) operator converts to a COLUMN vector from another vector (row or column) or a matrix 

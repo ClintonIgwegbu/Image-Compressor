@@ -1,4 +1,4 @@
-function ratios = get_equal_mse_ratios(num_stages, X)
+function ratios = get_equal_mse_ratios(X, num_stages)
     X_test = zeros(size(X)); 
                              
     h = [0.25 0.5 0.25];
