@@ -13,9 +13,9 @@ function rms = get_rms_pyramid(step, X, h, num_stages, equal_mse)
     % fetch sub-images up to 4 level
     [x1,x2,x3,x4,y0,y1,y2,y3] = pyenc(X,h);
     
-    % if statements ensure index does not exceed size of ratios array
-    % if it does we don't care about that value of step so we set it to 0
     
+    % find the quantisation step for each stage
+    % switch statement ensures index of step is not exceeded 
     stepA = step(1);
     stepB = 0;
     stepC = 0;

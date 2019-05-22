@@ -11,14 +11,8 @@ function rate = get_rate_pyramid(step_X, X, h, num_stages, equal_mse, tol)
     
     [x1,x2,x3,x4,y0,y1,y2,y3] = pyenc(X, h);
     
-%     if equal_mse
-%         ratios = get_equal_mse_ratios(num_stages, X);
-%     else
-%         ratios = ones(1, num_stages);
-%     end
-    
-    % if statements ensure index does not exceed size of ratios array
-    % if it does we don't care about that value of step so we set it to 0
+    % find the quantisation step for each stage
+    % switch statement ensures index of step is not exceeded 
     
     stepA = step(1);
     stepB = 0;
