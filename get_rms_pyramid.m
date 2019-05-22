@@ -5,31 +5,32 @@ function rms = get_rms_pyramid(step, X, h, num_stages, equal_mse)
     if equal_mse
         ratios = get_equal_mse_ratios(X, num_stages);
     else
-        ratios = ones(num_stages);
+        ratios = ones(1, num_stages);
     end
+    
+    step = step*ratios;
     
     % fetch sub-images up to 4 level
     [x1,x2,x3,x4,y0,y1,y2,y3] = pyenc(X,h);
     
     % if statements ensure index does not exceed size of ratios array
     % if it does we don't care about that value of step so we set it to 0
-    stepA = step;
-    if num_stages >= 2
-        stepB = step*ratios(2);
-    else
-        stepB = step;
-    end
     
-    if num_stages >= 3
-        stepC = step*ratios(3);
-    else
-        stepC = step;
-    end
+    stepA = step(1);
+    stepB = 0;
+    stepC = 0;
+    stepD = 0;
     
-    if num_stages >= 4
-        stepD = step*ratios(4);
-    else
-        stepD = step;
+    switch num_stages
+        case 2
+            stepB = step(2);
+        case 3
+            stepB = step(2);
+            stepC = step(3);
+        case 4
+            stepB = step(2);
+            stepC = step(3);
+            stepD = step(4);
     end
     
     % quantise with different steps for each layer 
