@@ -1,4 +1,4 @@
-function step = get_optimum_step(step_X, X, scheme, N, h, num_stages, equal_mse, tol)
+function step = get_optimum_step(step_X, X, scheme, N, h, s, num_stages, equal_mse, tol)
     
     % boolean dct indicates whether dct or pyramid scheme is being used 
     % Returns the quantisation step size that ensures the same rms value
@@ -18,7 +18,7 @@ function step = get_optimum_step(step_X, X, scheme, N, h, num_stages, equal_mse,
     x2 = 50;
     
     % pass function as argument only varying parameter, step
-    f = @(step) dist_to_rms_X(step, step_X, X, scheme, N, h, num_stages, equal_mse); % objective function
+    f = @(step) dist_to_rms_X(step, step_X, X, scheme, N, h, s, num_stages, equal_mse); % objective function
     
     step = golden_search(f, x1, x2, tol);
     

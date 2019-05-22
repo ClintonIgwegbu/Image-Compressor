@@ -1,4 +1,4 @@
-function rate = get_compression_rate(step_X, X, scheme, N, h, num_stages, equal_mse, tol)
+function rate = get_compression_rate(step_X, X, scheme, N, h, s, num_stages, equal_mse, tol)
       
     % GET_COMPRESSION_RATE 
     % Get compression rate given that compressed data is quantised with
@@ -14,6 +14,9 @@ function rate = get_compression_rate(step_X, X, scheme, N, h, num_stages, equal_
             
         case 'pyramid'
             rate = get_rate_pyramid(step_X, X, h, num_stages, equal_mse, tol);
+            
+        case 'lbt'
+            rate = get_rate_lbt(step_X, X, N, s, tol);
             
         case 'dwt'
             
