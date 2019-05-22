@@ -31,17 +31,19 @@ function step = get_optimum_step(step_X, X, scheme, N, h, s, num_stages, equal_m
         end
         
     elseif strcmp(scheme, 'dwt')
-        if equal_mse == 1
-           step = step * get_equal_mse_ratios(X,'dwt',num_stages);
-
-        else
-            step = step * ones(3,num_stages+1); 
-        end
+            if equal_mse == 1
+               step = step * get_equal_mse_ratios(X,'dwt',num_stages);
+               
+            else
+            end
             
     end    
     
 return 
 
+% note that for dct = false, different results are obtained from that given
+% in first interim report as here we deal with Xsym instead of X. The same
+% results may be obtained by passing X+128 as a parameter.
 
 
 

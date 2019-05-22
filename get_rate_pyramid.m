@@ -6,7 +6,7 @@ function rate = get_rate_pyramid(step_X, X, h, num_stages, equal_mse, tol)
     % i.e. this function returns the compression rate given that an objective
     % measure of image quality is preserved 
     
-    step = get_optimum_step(step_X, X, 'pyramid', 0, h, num_stages, equal_mse, tol);
+    step = get_optimum_step(step_X,X,'pyramid',0,h,0,num_stages,equal_mse,tol);
     
     
     [x1,x2,x3,x4,y0,y1,y2,y3] = pyenc(X, h);

@@ -3,7 +3,7 @@ function rms = get_rms_pyramid(step, X, h, num_stages, equal_mse)
     % finds the root mean square value of a laplacian pyramid 
     
     if equal_mse
-        ratios = get_equal_mse_ratios(X, num_stages);
+        ratios = get_equal_mse_ratios(X, 'pyramid', num_stages);
     else
         ratios = ones(1, num_stages);
     end

@@ -21,6 +21,7 @@ function dist = dist_to_rms_X(step, step_X, X, scheme, N, h, s, num_stages, equa
             dist = abs(get_rms_lbt(step, X, N, s) - rms_X); 
             
         case 'dwt'
+            dist = abs(get_rms_dwt(step, X, num_stages) - rms_X);
             
         otherwise
             % display error message

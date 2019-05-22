@@ -19,6 +19,7 @@ function rate = get_compression_rate(step_X, X, scheme, N, h, s, num_stages, equ
             rate = get_rate_lbt(step_X, X, N, s, tol);
             
         case 'dwt'
+            rate = get_rate_dwt(step_X, X, num_stages, equal_mse, tol); 
             
         otherwise
             % display error message
