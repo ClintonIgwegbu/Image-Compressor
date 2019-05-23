@@ -1,6 +1,6 @@
 
 Xsym = X-128; 
-N=4; s=1.4051; I=256;
+N=8; s=1.4051; I=256;
 CN = dct_ii(N);
 % what does scaling factor, s, do?
 % s determines the degree of BI-ORTHOGONALITY> If s=1 then Pf=Pr otherwise

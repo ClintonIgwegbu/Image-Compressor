@@ -2,17 +2,17 @@ Xsym = X - 128; N = 8; CN = dct_ii(N);
 
 Y = colxfm(colxfm(Xsym,CN)',CN)';
 
-draw(regroup(Y,N)/N);
+% draw(regroup(Y,N)/N);
 
 step_X = 17;
-step = get_optimum_step(17,Xsym,'dct',N,0,0,0,0.0001);
+step = get_optimum_step(17,Xsym,'dct',N,0,0,0,0,0.0001);
 
 Xq = quantise(Xsym, step_X);
 Yq = quantise(Y, step); 
 Z = colxfm(colxfm(Yq',CN')',CN');
 
 Yr = regroup(Yq,N)/N;
-compression_ratio = 1/get_compression_rate(step_X,Xsym,'dct',N,0,0,0,0.0001)
+compression_ratio = 1/get_compression_rate(step_X,Xsym,'dct',N,0,0,0,0,0.0001)
 num_bits = dctbpp(Yr, N) * 256^2
 
 % compression ratio = 2.9416 for step_X = 17 and N = 8
@@ -32,7 +32,7 @@ draw(Xq)
 
 figure(3)
 draw(Z)
-% N=16 image is still much better visual quality than Xq - there are
+% % N=16 image is still much better visual quality than Xq - there are
 % strange visual artefacts around tower though
 % N=4 image is also better than Xq though it is grainer than N=16
 % N=8 images is best visually - doesn't have N=16's image visual artefacts

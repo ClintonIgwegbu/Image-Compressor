@@ -15,22 +15,21 @@ Z = colxfm(colxfm(Y',C8')',C8'); draw(Z);
 max(abs(Xsym(:)-Z(:))); % gives 6.1107e-13
 % 
 bases = [zeros(1,8); C8'; zeros(1,8)]; 
-draw(255*bases(:)*bases(:)');
+draw(bases(:)*bases(:)');
+% 
+% step = 17;
+% Yq = quantise(Y, step); 
+% Yr = regroup(Yq,N)/N; 
+% draw(Yr)
+% bpp(Yr); % gives 1.6728 i.e. 1.0963e+05 total bits
+% dctbpp(Yr, N); % gives 1.4872 i.e. 9.7467e+04 bits
+% bpp(Yr) / dctbpp(Yr, N); % 1.1248
+% 
+% Z = colxfm(colxfm(Yq',C8')',C8');
+% Xq = quantise(Xsym, step);
+% std(Xsym(:) - Z(:)); % gives 3.7568
+% std(Xsym(:) - Xq(:)); % gives 4.8612 LARGER than that above? why?
 
-step = 17;
-Yq = quantise(Y, step); 
-Yr = regroup(Yq,N)/N; 
-draw(Yr)
-bpp(Yr); % gives 1.6728 i.e. 1.0963e+05 total bits
-dctbpp(Yr, N); % gives 1.4872 i.e. 9.7467e+04 bits
-bpp(Yr) / dctbpp(Yr, N); % 1.1248
-
-Z = colxfm(colxfm(Yq',C8')',C8');
-Xq = quantise(Xsym, step);
-std(Xsym(:) - Z(:)); % gives 3.7568
-std(Xsym(:) - Xq(:)); % gives 4.8612 LARGER than that above? why?
-
-get_optimum_step()
 
 
 
