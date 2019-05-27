@@ -3,16 +3,17 @@ function rate = get_rate_dwt(step_X, X, num_stages, equal_mse, tol)
     % Discrete Wavelength Transform scheme is used.
     
     Xq = quantise(X,step_X);
-    step = get_optimum_step(step_X,X,'dwt',0,0,0,num_stages,equal_mse,tol);
+    dwtstep = get_optimum_step(step_X,X,'dwt',0,0,0,num_stages,equal_mse,tol);
+    n = num_stages;
     
     % obtain quantisation steps 
-    if equal_mse
-        dwtstep = step * get_equal_mse_ratios(X, 'dwt', num_stages);
-    else
-        dwtstep = step * ones(3, num_stages+1);
-    end
+%     if equal_mse
+%         dwtstep = step .* get_equal_mse_ratios(X, 'dwt', num_stages);
+%     else
+%         dwtstep = step .* ones(3, num_stages+1);
+%     end
     
-    Y = nlevdwt(X, num_stages);
+    Y = nleveldwt(X, num_stages);
     [~, dwtent] = quantdwt(Y, dwtstep);
     
     num_bits = 0;
@@ -22,7 +23,7 @@ function rate = get_rate_dwt(step_X, X, num_stages, equal_mse, tol)
     for i = 1:n
         num_bits = num_bits + m^2 * dwtent(1,i);
         num_bits = num_bits + m^2 * dwtent(2,i);
-        num_bits = num-bits + m^2 * dwtent(3,i);
+        num_bits = num_bits + m^2 * dwtent(3,i);
         m=m/2;
     end
     m=m*2;

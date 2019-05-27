@@ -1,4 +1,4 @@
-function rms = get_rms_dwt(step, X, num_stages)
+function rms = get_rms_dwt(step, X, num_stages, equal_mse)
     % GET_RMS_DWT Get the root mean squared value of the reconstructed
     % image Z after the n-level DWT transform Y has been quantised with
     % values given in dwtstep
@@ -12,9 +12,9 @@ function rms = get_rms_dwt(step, X, num_stages)
         dwtstep = step * ones(3, num_stages+1);
     end
     
-    Y = nlevdwt(X, n);
+    Y = nleveldwt(X, num_stages);
     [Yq, ~] = quantdwt(Y, dwtstep);
-    Z = nlevidwt(Yq, n);
+    Z = nlevelidwt(Yq, num_stages);
     rms = std(X(:) - Z(:));
     
     return

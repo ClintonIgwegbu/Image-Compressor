@@ -34,7 +34,7 @@ function rms = get_rms_pyramid(step, X, h, num_stages, equal_mse)
     end
     
     % quantise with different steps for each layer 
-    X_discrete = quantise(X, step); % it IS right of me to use step here instead of step_X
+    X_discrete = quantise(X, stepA); % it IS right of me to use step here instead of step_X
     x1 = quantise(x1, stepA);
     x2 = quantise(x2, stepB);
     x3 = quantise(x3, stepC);
