@@ -19,7 +19,7 @@ function [vlc bits huffval] = jpegenc(X, qstep, N, M, opthuff, dcbits)
 %  vlc is the variable length output code, where vlc(:,1) are the codes, and
 %  vlc(:,2) the number of corresponding valid bits, so that sum(vlc(:,2))
 %  gives the total number of bits in the image
-%  bits and huffval are optional outputs which return the Huffman encoding
+%  bits and huffval are optiofnal outputs which return the Huffman encoding
 %  used in compression
 
 % This is global to avoid too much copying when updated by huffenc
