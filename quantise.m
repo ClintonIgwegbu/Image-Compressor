@@ -10,11 +10,11 @@ function [y] = quantise(x, step, rise1)
 
 if step <= 0, y = x; return, end
 
-if nargin <= 2, rise1 = 1.5*step; end
+if nargin <= 2, rise1 = 0.5*step; end
 
 % Perform both quantisation steps
 y = quant2(quant1(x, step, rise1), step, rise1);
 
 
-'
+
 

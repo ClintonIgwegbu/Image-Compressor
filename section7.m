@@ -11,11 +11,11 @@ Y = colxfm(colxfm(Xsym,C8)',C8)';
 
 N = 8; draw(regroup(Y,N)/N); % divide by N to counter gain of DCT transform
 
-Z = colxfm(colxfm(Y',C8')',C8'); draw(Z);
+%Z = colxfm(colxfm(Y',C8')',C8'); draw(Z);
 max(abs(Xsym(:)-Z(:))); % gives 6.1107e-13
 % 
 bases = [zeros(1,8); C8'; zeros(1,8)]; 
-draw(255*bases(:)*bases(:)');
+%draw(255*bases(:)*bases(:)');
 % 
 % step = 17;
 % Yq = quantise(Y, step); 

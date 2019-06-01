@@ -22,5 +22,5 @@ tn = reshape(reshape(1:n,N(2),n/N(2))',1,n);
 
 Y = X(tm,tn);
 
-
+return
 
